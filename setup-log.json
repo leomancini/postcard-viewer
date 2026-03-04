@@ -1,6 +1,6 @@
 {
   "app_id": "postcard-viewer",
-  "app_name": "Postcard Viewer",
+  "app_name": "Postcard from Leo",
   "domain": "https://postcard.leo.gd",
   "host": "localhost",
   "port": "3118",
