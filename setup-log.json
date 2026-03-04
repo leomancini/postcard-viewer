@@ -1,0 +1,10 @@
+{
+  "app_id": "postcard-viewer",
+  "app_name": "Postcard Viewer",
+  "domain": "https://postcard.leo.gd",
+  "host": "localhost",
+  "port": "3118",
+  "author": "leo",
+  "anthropic": false,
+  "created_on": "Wed Mar  4 12:37:19 PM EST 2026"
+}
