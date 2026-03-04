@@ -141,7 +141,7 @@ const HintOverlay = styled.div`
     font-size: 24px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 0 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 0, 0, 0.6);
   }
 `;
 
