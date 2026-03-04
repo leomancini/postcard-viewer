@@ -1,6 +1,6 @@
 import express from "express";
 import Database from "better-sqlite3";
-import { readdirSync } from "fs";
+import { readdirSync, readFileSync, existsSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
@@ -53,9 +53,20 @@ app.post("/api/query", (req, res) => {
   }
 });
 
-// SPA fallback
+// SPA fallback with OG tags for postcard pages
 app.get("*", (req, res) => {
-  res.sendFile(join(__dirname, "dist", "index.html"));
+  const indexPath = join(__dirname, "dist", "index.html");
+  const match = req.path.match(/^\/([a-zA-Z0-9]+)$/);
+  if (match) {
+    const id = match[1];
+    const imgPath = join(__dirname, "postcards", id, "front.jpeg");
+    if (existsSync(imgPath)) {
+      const html = readFileSync(indexPath, "utf-8");
+      const ogTags = `<meta property="og:image" content="https://postcard.leo.gd/postcards/${id}/front.jpeg" />\n    <meta property="og:type" content="website" />\n    <meta name="twitter:card" content="summary_large_image" />\n    <meta name="twitter:image" content="https://postcard.leo.gd/postcards/${id}/front.jpeg" />`;
+      return res.send(html.replace("</head>", `    ${ogTags}\n  </head>`));
+    }
+  }
+  res.sendFile(indexPath);
 });
 
 app.listen(port, () => {
